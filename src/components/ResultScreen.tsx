@@ -21,13 +21,34 @@ export default function ResultScreen({ matches, vector, name, onRetry }: Props) 
   const [toast, setToast] = useState<string | null>(null);
   const clearToast = useCallback(() => setToast(null), []);
 
-  function handleCopyLink() {
+  /** /r/<캐릭터> 경로로 공유해야 링크 미리보기에 캐릭터 썸네일이 나옴 */
+  function shareUrl() {
     const params = new URLSearchParams({ s: encodeVector(vector), ...(name && { name }) });
-    const url = `${window.location.origin}${window.location.pathname}?${params}`;
+    return `${window.location.origin}/r/${c.id}?${params}`;
+  }
+
+  function copyLink(successMsg = '🔗 링크를 복사했어요!') {
     navigator.clipboard
-      .writeText(url)
-      .then(() => setToast('🔗 링크를 복사했어요!'))
+      .writeText(shareUrl())
+      .then(() => setToast(successMsg))
       .catch(() => setToast('복사에 실패했어요. 다시 시도해 주세요.'));
+  }
+
+  async function handleShare() {
+    if (!navigator.share) {
+      copyLink('🔗 공유 기능이 없는 브라우저라 링크를 복사했어요!');
+      return;
+    }
+    try {
+      await navigator.share({
+        title: '나는 어떤 먼작귀?',
+        text: `${name ? `${name}님과` : '나와'} 닮은 먼작귀는 「${c.name}」! ${c.title}`,
+        url: shareUrl(),
+      });
+    } catch (e) {
+      // 사용자가 공유 시트를 닫은 경우는 무시
+      if ((e as DOMException).name !== 'AbortError') copyLink('🔗 공유에 실패해서 링크를 복사했어요!');
+    }
   }
 
   async function handleDownloadCard() {
@@ -147,17 +168,23 @@ export default function ResultScreen({ matches, vector, name, onRetry }: Props) 
 
         {/* ── 액션 ── */}
         <div className="space-y-3">
+          <button
+            onClick={handleShare}
+            className="font-cute w-full py-4 rounded-3xl text-xl text-white active:translate-y-1 active:shadow-none transition-all"
+            style={{ backgroundColor: c.color, boxShadow: `0 4px 0 ${ink(c.color)}` }}
+          >
+            📤 결과 공유하기
+          </button>
           <div className="grid grid-cols-2 gap-3">
             <button
-              onClick={handleCopyLink}
-              className="font-cute py-4 rounded-3xl text-lg bg-white border-2 border-[#f1e4d6] text-[#4a3f3a] active:translate-y-0.5 transition-all"
+              onClick={() => copyLink()}
+              className="font-cute py-3.5 rounded-3xl text-lg bg-white border-2 border-[#f1e4d6] text-[#4a3f3a] active:translate-y-0.5 transition-all"
             >
               🔗 링크 복사
             </button>
             <button
               onClick={handleDownloadCard}
-              className="font-cute py-4 rounded-3xl text-lg text-white active:translate-y-0.5 transition-all"
-              style={{ backgroundColor: c.color, boxShadow: `0 4px 0 ${ink(c.color)}` }}
+              className="font-cute py-3.5 rounded-3xl text-lg bg-white border-2 border-[#f1e4d6] text-[#4a3f3a] active:translate-y-0.5 transition-all"
             >
               🖼 카드 저장
             </button>

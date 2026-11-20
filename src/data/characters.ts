@@ -1,4 +1,4 @@
-import type { Vector } from './axes';
+import type { Vector } from './axes.ts';
 
 export type CharacterId =
   | 'chiikawa'

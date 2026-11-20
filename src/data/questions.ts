@@ -1,4 +1,4 @@
-import { AXES, type Axis } from './axes';
+import { AXES, type Axis } from './axes.ts';
 
 export interface Question {
   id: number;

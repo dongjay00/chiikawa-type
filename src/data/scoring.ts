@@ -1,6 +1,6 @@
-import { AXES, type Axis, type Vector } from './axes';
-import { CHARACTER_LIST, type CharacterId } from './characters';
-import { QUESTIONS } from './questions';
+import { AXES, type Axis, type Vector } from './axes.ts';
+import { CHARACTER_LIST, type CharacterId } from './characters.ts';
+import { QUESTIONS } from './questions.ts';
 
 /** 1·2 = 앞 선택지(확실히·대체로), 3·4 = 뒤 선택지(대체로·확실히) */
 export type AnswerScore = 1 | 2 | 3 | 4;
