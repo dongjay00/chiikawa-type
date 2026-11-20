@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #fff8ee;
+  color: #4a3f3a;
+  font-family: 'Gowun Dodum', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.font-cute {
+  font-family: 'Jua', 'Gowun Dodum', sans-serif;
+}
+
+/* 은은한 물방울 배경 */
+.bg-dots {
+  background-color: #fff8ee;
+  background-image: radial-gradient(#f7d9e3 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop-in 0.55s ease-out both; }
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+.animate-wobble { animation: wobble 1.6s ease-in-out infinite; }
+
+@keyframes fade-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-fade-up { animation: fade-up 0.35s ease-out both; }
