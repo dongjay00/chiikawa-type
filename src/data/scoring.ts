@@ -8,8 +8,18 @@ export type Answers = Record<number, AnswerScore>;
 
 const SCORE_MAP: Record<AnswerScore, number> = { 1: 2, 2: 1, 3: -1, 4: -2 };
 
-/** 히든 캐릭터는 거리 가중치를 둬서 극단적인 응답일 때만 나오도록 */
-const HIDDEN_PENALTY = 1.12;
+/**
+ * 히든 캐릭터별 거리 가중치. 1보다 작을수록 잘 나옴.
+ * 일반적인 응답 기준으로 각각 약 0.5~1% 확률이 되도록 맞춘 값
+ * (주변 레귤러 캐릭터와의 거리가 제각각이라 캐릭터마다 다름)
+ */
+const HIDDEN_WEIGHT: Partial<Record<CharacterId, number>> = {
+  pochette: 0.65,
+  ramen: 0.8,
+  siren: 0.72,
+  ode: 0.67,
+  shimajiro: 0.77,
+};
 const MAX_DISTANCE = Math.sqrt(AXES.length * 4);
 
 export function calcVector(answers: Answers): Vector {
@@ -36,7 +46,7 @@ export interface Match {
 export function rankCharacters(user: Vector): Match[] {
   return CHARACTER_LIST.map((c) => {
     const d = distance(user, c.vector);
-    return { id: c.id, d, rank: c.hidden ? d * HIDDEN_PENALTY : d };
+    return { id: c.id, d, rank: d * (HIDDEN_WEIGHT[c.id] ?? 1) };
   })
     .sort((a, b) => a.rank - b.rank)
     .map(({ id, d }) => ({ id, sync: Math.round(Math.max(0, 1 - d / MAX_DISTANCE) * 100) }));
