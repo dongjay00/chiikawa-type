@@ -79,7 +79,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['긴장하면 실력 발휘가 잘 안 됨', '하고 싶은 말을 꾹 참다가 쌓아둠'],
     best: { id: 'hachiware', reason: '내가 망설일 때 "어떻게든 되어라!" 하고 손잡아 주는 단짝이에요.' },
     rival: { id: 'momonga', reason: '내 간식을 말없이 먹어버리는 그 녀석… 참다 참다 결국 폭발하게 돼요.' },
-    vector: v(-0.8, 0.6, 0.9, 0.5, 0.2),
+    vector: v(-0.6, 0.45, 0.9, 0.4, 0.25),
   },
 
   hachiware: {
@@ -105,7 +105,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['위험을 늦게 알아채는 편', '돈이 생기면 취미에 바로 써버림'],
     best: { id: 'chiikawa', reason: '말 못 할 마음까지 알아주는 단짝. 함께라면 무서운 토벌도 할 수 있어요.' },
     rival: { id: 'momonga', reason: '무슨 짓을 해도 반응 없는 나… 그게 오히려 상대를 더 약 올리기도 해요.' },
-    vector: v(0.6, 0.6, 0.5, -0.4, 0.9),
+    vector: v(0.6, 0.6, 0.3, -0.2, 0.9),
   },
 
   usagi: {
@@ -131,7 +131,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['엉뚱한 행동으로 주변을 당황시킴', '수상한 물건을 들여와 일을 키우기도 함'],
     best: { id: 'chiikawa', reason: '장난은 제일 많이 치지만, 힘들 땐 말없이 곁을 지켜주는 사이예요.' },
     rival: { id: 'momonga', reason: '막무가내도 나에겐 안 통해! 만나기만 하면 티격태격하는 라이벌.' },
-    vector: v(1.0, -0.4, -0.5, 0.3, 0.4),
+    vector: v(1.0, -0.2, -0.7, 0.2, 0.35),
   },
 
   momonga: {
@@ -157,7 +157,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['남의 기분을 살피는 건 조금 서툼', '귀찮은 일은 일단 피하고 봄'],
     best: { id: 'kani', reason: '아무리 제멋대로 굴어도 받아주고, 바른길로 이끌어주는 소중한 친구예요.' },
     rival: { id: 'usagi', reason: '내 귀여움이 전혀 안 통하는 유일한 상대. 만나면 꼭 당한다…' },
-    vector: v(0.5, -1.0, 0.9, -0.9, 0.5),
+    vector: v(0.45, -0.8, 0.7, -0.7, 0.3),
   },
 
   kurimanju: {
@@ -183,7 +183,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['속마음을 잘 드러내지 않음', '즐거움이 과하면 다음 날 숙취로 고생'],
     best: { id: 'shisa', reason: '맛있는 걸 나누고 아플 땐 서로 챙겨주는 최고의 식도락 메이트예요.' },
     rival: { id: 'usagi', reason: '장난이 지나치면 연어포로 한 대… 그래도 미워할 수 없는 사이.' },
-    vector: v(-0.3, 0.4, -0.9, -0.7, -0.9),
+    vector: v(-0.45, 0.5, -0.65, -0.65, -0.9),
   },
 
   rakko: {
@@ -209,7 +209,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['진지해서 다가가기 어려워 보임', '노래·컴퓨터 앞에선 의외로 허당'],
     best: { id: 'hachiware', reason: '망토까지 따라 두르는 귀여운 제자. 함께 수련하며 같이 강해지는 사이예요.' },
     rival: { id: 'momonga', reason: '열심히 가르쳐 줘도 악의로 받아치는 상대… 그래도 모질게 대하진 못해요.' },
-    vector: v(0.6, 0.6, -0.5, 0.8, -0.1),
+    vector: v(0.6, 0.6, -0.5, 0.8, 0.05),
   },
 
   shisa: {
@@ -235,7 +235,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     weaknesses: ['무리하다 번아웃이 오기 쉬움', '작은 잘못에도 죄책감을 크게 느낌'],
     best: { id: 'kurimanju', reason: '맛있는 걸 함께 나누고, 힘들 땐 쉬어도 된다고 말해주는 든든한 친구예요.' },
     rival: { id: 'ramen', reason: '라이벌이 아니라 존경하는 사부님! 언젠가 함께 건배하는 게 꿈이에요.' },
-    vector: v(-0.3, 0.7, 0.3, 0.7, 0.5),
+    vector: v(-0.55, 0.7, 0.25, 0.7, 0.5),
   },
 
   kani: {
@@ -259,7 +259,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     strengths: ['어떤 친구도 품어주는 넓은 마음', '작은 것에서 기쁨을 찾는 순수함', '의외로 힘이 센 반전 매력'],
     weaknesses: ['당황하면 얼굴이 금방 빨개짐', '친구에게 맞춰주다 손해 보기도 함'],
     best: { id: 'momonga', reason: '제멋대로인 친구지만 나에겐 처음 생긴 소중한 친구예요.' },
-    vector: v(-0.2, 1.0, 0.6, 0.0, -0.6),
+    vector: v(0.2, 0.95, 0.65, 0.25, -0.6),
   },
 
   // ───────────────────────── 히든 ─────────────────────────
